@@ -15,12 +15,14 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire)
 makedepends=(intltool gobject-introspection git gnome-common)
 groups=(gnome)
-options=(!emptydirs)
+options=(debug !strip !emptydirs)
 _commit=193216c2a7b9196fe3ce69192d94bf2995814113  # gnome-3-26
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
-        startup-notification.patch)
+        startup-notification.patch
+	monitor-race.patch)
 sha256sums=('SKIP'
-            '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366')
+            '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
+            '8e08a56bfe92a6c5cdb15f5b2d04617e602544bd3bfda8ad297fd91fb8076b06')
 
 pkgver() {
   cd $pkgname
@@ -32,6 +34,7 @@ prepare() {
 
   # https://bugs.archlinux.org/task/51940
   patch -Np1 -i ../startup-notification.patch
+  patch -Np1 -i ../monitor-race.patch
 
   NOCONFIGURE=1 ./autogen.sh
 }
