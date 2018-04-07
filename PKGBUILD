@@ -4,11 +4,12 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter
-pkgver=3.28.0
+pkgver=3.28.0+9+gc599d4c7d
 pkgrel=1
 pkgdesc="A window manager for GNOME"
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
+options=(debug !strip)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
@@ -28,6 +29,12 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
+  git revert --no-edit 712ec30c
+  git revert --no-edit b4d642be
+  git revert --no-edit b22875aa..6f59e485
+  git revert --no-edit b22875aa
+  git revert --no-edit 76b39684..cc4e0071
 
   # https://bugs.archlinux.org/task/51940
   patch -Np1 -i ../startup-notification.patch
