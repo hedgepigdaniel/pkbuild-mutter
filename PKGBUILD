@@ -4,12 +4,11 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter
-pkgver=3.28.0+9+gc599d4c7d
+pkgver=3.28.0+10+gfc339fbed
 pkgrel=1
 pkgdesc="A window manager for GNOME"
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
-options=(debug !strip)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
@@ -35,6 +34,9 @@ prepare() {
   git revert --no-edit b22875aa..6f59e485
   git revert --no-edit b22875aa
   git revert --no-edit 76b39684..cc4e0071
+
+  # Fix duplicated cursor on rotated screens
+  git cherry-pick --no-edit 8696a794772e4e801b8132f08f54043b1140abf9
 
   # https://bugs.archlinux.org/task/51940
   patch -Np1 -i ../startup-notification.patch
