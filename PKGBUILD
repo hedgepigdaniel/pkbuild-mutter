@@ -4,19 +4,20 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter
-pkgver=3.28.0
+pkgver=3.27.1+290+gc70320146
 pkgrel=1
 pkgdesc="A window manager for GNOME"
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
+options=(debug !strip)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
          gnome-settings-daemon libgudev libinput pipewire)
 makedepends=(intltool gobject-introspection git)
 groups=(gnome)
-_commit=47856d97011d7a9bd13c1e1c638a6e43ebd9d9ac  # tags/3.28.0^0
-source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+_commit=c70320146399e4bd14014db6c493e6a108fbeba0  # wip/issue81
+source=("git+https://gitlab.gnome.org/lfrb/mutter.git#commit=$_commit"
         startup-notification.patch)
 sha256sums=('SKIP'
             '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366')
