@@ -4,7 +4,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter
-pkgver=3.27.1+290+gc70320146
+pkgver=3.27.1+288+g93ac74ad1
 pkgrel=1
 pkgdesc="A window manager for GNOME"
 url="https://git.gnome.org/browse/mutter"
@@ -16,7 +16,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanber
          gnome-settings-daemon libgudev libinput pipewire)
 makedepends=(intltool gobject-introspection git)
 groups=(gnome)
-_commit=c70320146399e4bd14014db6c493e6a108fbeba0  # wip/issue81
+_commit=93ac74ad13f3973a21d097de6bd232e900571ffc  # wip/issue81
 source=("git+https://gitlab.gnome.org/lfrb/mutter.git#commit=$_commit"
         startup-notification.patch)
 sha256sums=('SKIP'
