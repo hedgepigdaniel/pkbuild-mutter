@@ -9,6 +9,7 @@ pkgrel=1
 pkgdesc="A window manager for GNOME"
 url="https://git.gnome.org/browse/mutter"
 arch=(x86_64)
+options=(debug !strip)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
